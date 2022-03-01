@@ -9,9 +9,13 @@ module.exports = {
         primaryKey: true,
         autoIncrement: true,
       },
-      title: {
+      season: {
         allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
+      },
+      year: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
       },
       detail: {
         allowNull: false,

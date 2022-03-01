@@ -18,6 +18,41 @@ exports.getPerformance = async (req, res, next) => {
   }
 };
 
+exports.editPerformance = async (req, res, next) => {
+  try {
+    const { title, detail } = req.body;
+    const { id } = req.params;
+
+    if (!title && !detail && !req.body) {
+      return res.status(400).json({ message: "title and detail not found" });
+    }
+
+    const performance = await Performance.update(
+      {
+        title,
+        detail,
+      },
+      {
+        where: {
+          id,
+          user_id: req.user.id,
+        },
+      }
+    );
+
+    const performances = await Performance.findOne({
+      where: {
+        id,
+        user_id: req.user.id,
+      },
+    });
+
+    res.status(201).json({ performances });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
 exports.createPerformance = async (req, res, next) => {
   try {
     console.log(req.body);

@@ -8,6 +8,7 @@ module.exports = (sequelize, DataType) => {
       },
       img: {
         type: DataType.STRING,
+        allowNull: false,
       },
       date: {
         type: DataType.DATEONLY,

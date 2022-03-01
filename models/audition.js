@@ -2,8 +2,12 @@ module.exports = (sequelize, DataType) => {
   const Audition = sequelize.define(
     "Audition",
     {
-      title: {
-        type: DataType.STRING,
+      season: {
+        type: DataType.NUMBER,
+        allowNull: false,
+      },
+      year: {
+        type: DataType.NUMBER,
         allowNull: false,
       },
       detail: {
